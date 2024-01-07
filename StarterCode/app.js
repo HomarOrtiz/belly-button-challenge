@@ -27,7 +27,6 @@ function init() {
     buildBubbleChart(sample_one)
     buildMetadata(sample_one)
     optionChanged(sample_one)
-    buildGaugeChart(sample_one)
 
     dropdownMenu.on("change", function() {
         let selectedValue = d3.select("#selDataset").property("value");
@@ -128,28 +127,3 @@ function optionChanged(value) {
     buildBubbleChart(value);
     
 };
-
-function buildGaugeChart(id) {
-
-    let data = jsonData.metadata
-
-    let wfreq = data.find(result => result.wfreq == id)
-
-    let sample = data[0]
-
-    console.log(data)
-
-    var gauge = [
-        {
-            domain: { x: [0, 9], y: [0, 9] },
-            value: [0-9],
-            title: { text: "Washing Frequency" },
-            type: "indicator",
-            mode: "gauge+number"
-        }
-    ];
-    
-    var layout = { width: 600, height: 500, margin: { t: 0, b: 0 } };
-    Plotly.newPlot('myDiv', gauge, layout);
-
-}
